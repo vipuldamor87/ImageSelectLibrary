@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
     val REQUEST_IMAGE_CAPTURE = 1
     val authority = "com.vipuldamor87.imagelibrary2"
+    var crop: Boolean = false
 
     private val PERMISSION_REQUEST_CODE: Int = 101
 
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         butn.setOnClickListener {
             if (checkPersmission()){
+                crop = true
                 SelectImage.setCurrentPath(mCurrentPhotoPath)
                 SelectImage.SelectImage(this, packageName)
                // SelectImage.CropTheImage(this)
@@ -77,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         if (resultCode == RESULT_OK) {
             if (requestCode == 1) {
                 try {
-                   SelectImage.CropTheImage(this)
+                   SelectImage.CropTheImag(this)
                 }
                 catch (e: Exception) {
                     e.printStackTrace()
